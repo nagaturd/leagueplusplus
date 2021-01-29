@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Profile from "./Profile.js";
-import { apiKey } from "../config.json";
+import { Link } from "react-router-dom";
 
 const Search = () => {
-  const [summoner, setSummoner] = useState([]);
   const [search, setSearch] = useState("");
 
   // Updates when stuff is typed in search box
@@ -11,24 +9,9 @@ const Search = () => {
     setSearch(e.target.value);
   };
 
-  // Look up summoner using Riot API
-  const getSummoner = async (e) => {
-    e.preventDefault();
-    let summoner = encodeURI(search);
-    const url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=${apiKey}`;
-
-    // Handles API call
-    const response = await fetch(url);
-    console.log(response);
-    const data = await response.json();
-    console.log(data);
-
-    setSummoner(data);
-  };
-
   return (
     <div>
-      <form className="search-form" onSubmit={getSummoner}>
+      <form className="search-form">
         <input
           className="search-bar"
           type="text"
@@ -36,11 +19,17 @@ const Search = () => {
           placeholder="Search summoner"
           onChange={updateSearch}
         />
-        <button className="search-button" type="submit">
-          Search
-        </button>
+        <Link
+          to={{
+            pathname: "/summoner",
+            state: { summonerName: search },
+          }}
+        >
+          <button className="search-button" type="submit">
+            Search
+          </button>
+        </Link>
       </form>
-      <Profile summoner={summoner} />
     </div>
   );
 };
