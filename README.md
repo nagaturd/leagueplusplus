@@ -9,3 +9,8 @@
 * Built a persistent navigation bar for easier navigation to different pages.
 * Searching is implemented to Home page where a search will open a new page and show some information about the Summoner that is searched.
 * Tomorrow, I still need to build out error handling for both fetching api (e.g. handling status codes) and when searching for a summoner (e.g. "Summoner Does Not Exist" message).
+
+##### 1/31/2021:
+* Took a break from front-end to learn back-end (express) and implement an API Proxy
+* Searching now requests the server to request from Riot API, hiding my API key
+* Next, building error handling to handle status codes from Riot (probably on the server end?)
