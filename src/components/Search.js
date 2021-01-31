@@ -21,7 +21,7 @@ const Search = () => {
         />
         <Link
           to={{
-            pathname: "/summoner",
+            pathname: `/summoner/name=${search}`,
             state: { summonerName: search },
           }}
         >

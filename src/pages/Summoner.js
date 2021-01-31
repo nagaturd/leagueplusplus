@@ -1,28 +1,40 @@
 import { React, useState, useEffect } from "react";
-import { apiKey } from "../config.json";
+import { getSummoner } from "../api/summoner.js";
+
+const SearchError = (props) => {
+  return (
+    <div>
+      <p>Message: {props.response.status.message}</p>
+      <p>Status Code: {props.response.status.status_code}</p>
+    </div>
+  );
+};
+
+const SummonerFound = (props) => {
+  return (
+    <div>
+      <h1>{props.response.name}</h1>
+      <p>Summoner Level: {props.response.summonerLevel}</p>
+    </div>
+  );
+};
 
 const Summoner = (props) => {
-  const [summoner, setSummoner] = useState("");
-
-  const getSummoner = async () => {
-    let summoner = encodeURI(props.location.state.summonerName);
-    const url = `https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner}?api_key=${apiKey}`;
-
-    // Handles API call
-    const response = await fetch(url);
-    const data = await response.json();
-
-    setSummoner(data);
-  };
+  const [result, setResult] = useState("");
 
   useEffect(() => {
-    getSummoner();
-  }, []);
+    getSummoner(props.location.state.summonerName).then((response) =>
+      setResult(response)
+    );
+  }, [props.location.state.summonerName]);
 
   return (
     <div>
-      <h1>{summoner.name}</h1>
-      <p>Summoner Level: {summoner.summonerLevel}</p>
+      {result.status ? (
+        <SearchError response={result} />
+      ) : (
+        <SummonerFound response={result} />
+      )}
     </div>
   );
 };
