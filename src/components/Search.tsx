@@ -5,7 +5,7 @@ const Search = () => {
   const [search, setSearch] = useState("");
 
   // Updates when stuff is typed in search box
-  const updateSearch = (e) => {
+  const updateSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 

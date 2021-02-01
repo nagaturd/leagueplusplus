@@ -1,4 +1,4 @@
-export const getSummoner = async (name) => {
+export const getSummoner = async (name: string) => {
   let summoner = encodeURI(name);
   const url = `http://localhost:5000/api/summoner/${summoner}`;
 

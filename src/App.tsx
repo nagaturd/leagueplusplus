@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "./components/Navbar/Navbar.js";
-import Home from "./pages/Home.js";
-import Champions from "./pages/Champions.js";
-import Summoner from "./pages/Summoner.js";
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./pages/Home";
+import Champions from "./pages/Champions";
+import Summoner from "./pages/Summoner";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/champions" component={Champions} />
-          <Route path="/summoner" component={Summoner} />
+          <Route path="/summoner/name=:search" component={Summoner} />
         </Switch>
       </div>
     </Router>
