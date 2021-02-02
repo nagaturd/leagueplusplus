@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getSummoner } from "../api/summoner";
 import { RouteComponentProps } from "react-router-dom";
 
-type Response = {
+interface ISummonerAPI {
   id?: string;
   accountId?: string;
   puuid?: string;
@@ -14,9 +14,9 @@ type Response = {
     message?: string;
     status_code?: number;
   };
-};
+}
 
-const SearchError = (response: Response) => {
+const SearchError = (response: ISummonerAPI) => {
   return (
     <div>
       <p>Message: {response.status!.message}</p>
@@ -25,7 +25,7 @@ const SearchError = (response: Response) => {
   );
 };
 
-const SummonerFound = (response: Response) => {
+const SummonerFound = (response: ISummonerAPI) => {
   return (
     <div>
       <h1>{response.name}</h1>
@@ -39,7 +39,7 @@ type TParams = {
 };
 
 const Summoner = ({ match }: RouteComponentProps<TParams>) => {
-  const [result, setResult] = useState<Response | null>(null);
+  const [result, setResult] = useState<ISummonerAPI>();
 
   useEffect(() => {
     getSummoner(match.params.search).then((response) => setResult(response));
