@@ -15,3 +15,6 @@
 * Searching now requests the server to request from Riot API, hiding my API key
 * Next, building error handling to handle status codes from Riot (probably on the server end?)
 * Actually ended up trying to migrate to TypeScript early on but need to go back and fix some things tomorrow
+
+##### 2/2/2021:
+* Finished migration to TypeScript
