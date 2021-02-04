@@ -18,3 +18,8 @@
 
 ##### 2/2/2021:
 * Finished migration to TypeScript
+
+##### 2/3/2021:
+* Added MongoDB (Atlas) to the stack to handle caching of API calls on the Express server
+* Tomorrow, I want to add request handling to grab from cache or update the cache based on time past since last call. And maybe some rate limiting functionality on top of that.
+

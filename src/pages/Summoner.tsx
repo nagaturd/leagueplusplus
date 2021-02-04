@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { getSummoner } from "../api/summoner";
+import { fetchSummoner } from "../api/summoner";
 import { RouteComponentProps } from "react-router-dom";
-
-interface ISummonerAPI {
-  id?: string;
-  accountId?: string;
-  puuid?: string;
-  name?: string;
-  profileIconId?: number;
-  revisionDate?: number;
-  summonerLevel?: number;
-  status?: {
-    message?: string;
-    status_code?: number;
-  };
-}
+import { ISummonerAPI } from "../api/api-interfaces";
 
 const SearchError = (response: ISummonerAPI) => {
   return (
@@ -39,10 +26,10 @@ type TParams = {
 };
 
 const Summoner = ({ match }: RouteComponentProps<TParams>) => {
-  const [result, setResult] = useState<ISummonerAPI>();
+  const [result, setResult] = useState<ISummonerAPI>({});
 
   useEffect(() => {
-    getSummoner(match.params.search).then((response) => setResult(response));
+    fetchSummoner(match.params.search).then((response) => setResult(response));
   }, [match.params.search]);
 
   return (
