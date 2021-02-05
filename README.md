@@ -27,3 +27,4 @@
 * Search now retrieves from either API or DB based on existence of cached information
 * Able to track through name changes by relying on a different persistent account identifier
 * See [lpp-server](https://github.com/nagaturd/lpp-server)
+* My next goal is add another check to only make API requests if a certain duration has past since last request (stored in "lastModified")
