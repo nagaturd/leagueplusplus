@@ -23,3 +23,7 @@
 * Added MongoDB (Atlas) to the stack to handle caching of API calls on the Express server
 * Tomorrow, I want to add request handling to grab from cache or update the cache based on time past since last call. And maybe some rate limiting functionality on top of that.
 
+##### 2/4/2021:
+* Search now retrieves from either API or DB based on existence of cached information
+* Able to track through name changes by relying on a different persistent account identifier
+* See [lpp-server](https://github.com/nagaturd/lpp-server)
