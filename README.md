@@ -1,4 +1,4 @@
-### Tracking Progress
+### Tracking Progress (includes [lpp-server](https://github.com/nagaturd/lpp-server) progress)
 ##### 1/27/2021:
 * Initial commit. Making a React app starting with a simple search function to look up a summoner name and return some information about the summoner.
 * **Issues**: API call is made on first render, but functionally everything is working. See [here](https://github.com/nagaturd/leagueplusplus/blob/ac7dd294f43a378933c0308fe6135a3abba63cfb/src/components/Search.js#L10-L12) for the problem code.
@@ -28,3 +28,7 @@
 * Able to track through name changes by relying on a different persistent account identifier
 * See [lpp-server](https://github.com/nagaturd/lpp-server)
 * My next goal is add another check to only make API requests if a certain duration has past since last request (stored in "lastModified")
+
+##### 2/5/2021:
+* Added another check to make sure that new requests to API are done when it doesn't exist in the database or the entry is older than 30 seconds.
+* This helps limit the number of API calls made but is also short enough to maintain up-to-date information
