@@ -32,3 +32,7 @@
 ##### 2/5/2021:
 * Added another check to make sure that new requests to API are done when it doesn't exist in the database or the entry is older than 30 seconds.
 * This helps limit the number of API calls made but is also short enough to maintain up-to-date information
+
+##### 2/11/2021:
+* Before I add more, I needed to go back and do some restructuring to make sure I have a proper foundation to build from when I start building out other components.
+* I took some time to do more reading on other React features that I might implement when I start to build out more features
